@@ -15,6 +15,12 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug');
 app.use('/', login);
 app.use('/homePage', auth, homePage);
+
+app.use(function(req,res){
+    res.statusCode =404;
+    res.end('Page Not Found: 404 Error')
+})
+
 app.get('/login/css', (req, res) => {
     res.sendFile(__dirname + "/style/login.css");
 })

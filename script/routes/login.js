@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 
 router.get('/', (req, res) => {
+    console.log("u r here")
     res.render('login')
 })
 
@@ -14,6 +15,7 @@ router.get('/css', (req, res) => {
 router.post('/', (req, res) => {
     const emailValue = req.body.email.trim();
     const password = req.body.password.trim();
+    console.log("name: " + req.body.email+ " ||| OK: " + req.body.ok);
     if (isValidUser(emailValue, password)) {
         res.cookie("jwt", generateToken(emailValue, password), {
             httpOnly: true
